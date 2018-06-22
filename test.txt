@@ -1,22 +1,11 @@
 $db = new SQLite3("OogiriData.db");
-
-$search_word = 'ドラえもん';
+$search_word = 'スマホ';
 
 $rows = $db->query("select * from OogiriData where お題 like '%$search_word%' ;");
-echo '<table align="left">';
-echo '<tr><td><b>お題</b></td><td><b>回答</b></td></tr>';
+//echo '<tr><td><b>お題</b></td><td><b>回答</b></td></tr>';
 
 while ($row = $rows->fetchArray(SQLITE3_ASSOC)) {
-
-    echo '<tr>';
     
-    echo '<td>';
-    echo $row['お題'];
-    echo '</td>';
-    echo '<td>';
-    echo $row['回答'];
-    echo '</td>';
-    
-    echo '</tr>';
+    echo '<table align="left" style="margin-bottom:25px"><tr><td>お題</td><td >' . $row['お題']. '</td></tr><tr><td>ボケ</td><td>' . $row['回答'] . '</td></tr></table>';
+    echo '<br clear="left">';
 }
-echo '</table>';
